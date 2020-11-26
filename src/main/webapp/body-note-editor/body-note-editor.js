@@ -33,7 +33,7 @@ class BodyNoteEditor extends React.Component {
                         newNote: {...this.state.newNote, bodyNote: event.target.value}
                       })}
                 className="form-control"
-                value={this.state.oldNote.bodyNote}/>
+                value={this.state.newNote.bodyNote}/>
             <button
                 type="button"
                 onClick={() => this.submitForm()}
@@ -45,9 +45,6 @@ class BodyNoteEditor extends React.Component {
               Cancel
             </a>
           </form>
-          <a href={`../../body-note-list/body-note-list.html?bodyNote=${this.state.oldNote.bodyNote}`}>
-            Body Note List
-          </a>
         </div>
     )
   }
