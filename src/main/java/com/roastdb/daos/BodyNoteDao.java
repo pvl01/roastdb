@@ -40,12 +40,11 @@ public class BodyNoteDao {
     bodyNoteRepository.deleteById(bodyNote);
   }
 
-  @GetMapping("/renameBodyNote/{oldBodyNote}/{newBodyNote}")
+  @GetMapping("/renameBodyNote/{bodyNote}")
   public BodyNote renameBodyNote(
-      @PathVariable("oldBodyNote") String oldBodyNote,
-      @PathVariable("newBodyNote") String newBodyNote) {
-    BodyNote bodyNote = bodyNoteRepository.findById(oldBodyNote).get();
-    bodyNote.setNote(newBodyNote);
-    return bodyNoteRepository.save(bodyNote);
+      @PathVariable("bodyNote") String bodyNote) {
+    BodyNote note = bodyNoteRepository.findById(bodyNote).get();
+    note.setNote("Very Balanced");
+    return bodyNoteRepository.save(note);
   }
 }
