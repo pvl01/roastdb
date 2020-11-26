@@ -36,16 +36,16 @@ class BodyNoteList extends React.Component {
             <tbody>
             {
               this.state.notes.map((bodyNote) =>
-                  <tr key={bodyNote.bodyNote}>
-                    <td>{bodyNote.bodyNote}</td>
+                  <tr key={bodyNote}>
+                    <td>{bodyNote}</td>
                     <td>
                       <button className="btn btn-primary float-right"
-                         href={`../body-note-editor/body-note-editor.html?bodyNote=${bodyNote.bodyNote}`}>
+                         href={`../body-note-editor/body-note-editor.html?bodyNote=${bodyNote}`}>
                         Edit
                       </button>
                       <button className="btn btn-danger float-right"
                               onClick={() => this.deleteBodyNote(
-                                  bodyNote.bodyNote)}>
+                                  bodyNote)}>
                         Delete
                       </button>
                     </td>
