@@ -9,7 +9,7 @@ class BodyNoteEditor extends React.Component {
   findBodyNote = () => {
     let search = window.location.search.split("=")
     const bodyNote = search[1]
-    findBodyNote(oldNote)
+    findBodyNote(bodyNote)
     .then(oldNote => this.setState({oldNote}))
   }
 
