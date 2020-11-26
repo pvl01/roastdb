@@ -4,14 +4,14 @@ class BodyNoteEditor extends React.Component {
     newNote: {}
   }
 
-  componentDidMount = () => this.findBodyNote()
-
   findBodyNote = () => {
     let search = window.location.search.split("=")
     const bodyNote = search[1]
     findBodyNote(bodyNote)
     .then(oldNote => this.setState({oldNote}))
   }
+
+  componentDidMount = () => this.findBodyNote()
 
   submitForm = () =>
       renameBodyNote(this.state.oldNote.bodyNote, this.state.newNote.bodyNote)
