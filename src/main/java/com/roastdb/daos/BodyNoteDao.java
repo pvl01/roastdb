@@ -31,7 +31,6 @@ public class BodyNoteDao {
   @GetMapping("/createBodyNote")
   public BodyNote createBodyNote() {
     BodyNote bodyNote = new BodyNote();
-    bodyNote.setNote("New BodyNote");
     return bodyNoteRepository.save(bodyNote);
   }
 
