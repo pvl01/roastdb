@@ -1,6 +1,6 @@
 class BodyNoteEditor extends React.Component {
   state = {
-    note: {}
+    note: {bodyNote: ''}
   }
 
   findBodyNote = () => {
