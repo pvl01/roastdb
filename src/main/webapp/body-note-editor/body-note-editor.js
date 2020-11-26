@@ -1,39 +1,38 @@
 class BodyNoteEditor extends React.Component {
   state = {
-    oldNote: {bodyNote:''},
-    newNote: {bodyNote:''}
+    note: {}
   }
 
   findBodyNote = () => {
     let search = window.location.search.split("=")
-    const bodyNote = search[1]
-    findBodyNote(bodyNote)
-    .then(oldNote => this.setState({oldNote}))
+    const note = search[1]
+    findBodyNote(note)
+    .then(note => this.setState({note}))
   }
 
   componentDidMount = () => this.findBodyNote()
 
   submitForm = () =>
-      renameBodyNote(this.state.oldNote.bodyNote, this.state.newNote.bodyNote)
+      renameBodyNote(this.state.note.bodyNote, this.state.note.bodyNote)
       .then(this.findBodyNote)
 
   render() {
     return (
         <div className="container-fluid">
-          <h1>Body Note Editor {this.state.oldNote.bodyNote}</h1>
+          <h1>Body Note Editor {this.state.note.bodyNote}</h1>
           <form>
             <input
-                value={this.state.oldNote.bodyNote}
+                value={this.state.note.bodyNote}
                 className="form-control"
                 readOnly={true}/>
             <input
                 onChange={
                   (event) =>
                       this.setState({
-                        newNote: {...this.state.newNote, bodyNote: event.target.value}
+                        note: {...this.state.note, bodyNote: event.target.value}
                       })}
                 className="form-control"
-                value={this.state.newNote.bodyNote}/>
+                value={this.state.note.bodyNote}/>
             <button
                 type="button"
                 onClick={() => this.submitForm()}
