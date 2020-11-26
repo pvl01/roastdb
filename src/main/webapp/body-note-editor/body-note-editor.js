@@ -14,7 +14,7 @@ class BodyNoteEditor extends React.Component {
   }
 
   submitForm = () =>
-      renameBodyNote(this.state.oldNote, this.state.newNote)
+      renameBodyNote(this.state.oldNote.bodyNote, this.state.newNote.bodyNote)
       .then(this.findBodyNote)
 
   render() {
