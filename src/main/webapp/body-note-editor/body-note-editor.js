@@ -1,6 +1,7 @@
 class BodyNoteEditor extends React.Component {
   state = {
-    note: {}
+    oldNote: {},
+    newNote: {}
   }
 
   componentDidMount = () => this.findBodyNote()
@@ -8,31 +9,31 @@ class BodyNoteEditor extends React.Component {
   findBodyNote = () => {
     let search = window.location.search.split("=")
     const bodyNote = search[1]
-    findBodyNote(bodyNote)
-    .then(note => this.setState({note}))
+    findBodyNote(oldNote)
+    .then(oldNote => this.setState({oldNote}))
   }
 
   submitForm = () =>
-      updateCourse(this.state.note)
+      renameBodyNote(this.state.oldNote, this.state.newNote)
       .then(this.findBodyNote)
 
   render() {
     return (
         <div className="container-fluid">
-          <h1>Course Editor {this.state.note.bodyNote}</h1>
+          <h1>Body Note Editor {this.state.oldNote.bodyNote}</h1>
           <form>
             <input
-                value={this.state.note.bodyNote}
+                value={this.state.oldNote.bodyNote}
                 className="form-control"
                 readOnly={true}/>
             <input
                 onChange={
                   (event) =>
                       this.setState({
-                        note: {...this.state.note, bodyNote: event.target.value}
+                        newNote: {...this.state.newNote, bodyNote: event.target.value}
                       })}
                 className="form-control"
-                value={this.state.note.bodyNote}/>
+                value={this.state.oldNote.bodyNote}/>
             <button
                 type="button"
                 onClick={() => this.submitForm()}
@@ -44,7 +45,7 @@ class BodyNoteEditor extends React.Component {
               Cancel
             </a>
           </form>
-          <a href={`../../body-note-list/body-note-list.html?bodyNote=${this.state.note.bodyNote}`}>
+          <a href={`../../body-note-list/body-note-list.html?bodyNote=${this.state.oldNote.bodyNote}`}>
             Body Note List
           </a>
         </div>
