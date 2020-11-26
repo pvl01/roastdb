@@ -1,8 +1,8 @@
-const FIND_ALL_BODY_NOTE = "http://us-cdbr-east-02.cleardb.com/findAllBodyNote"
-const FIND_BODY_NOTE = "http://us-cdbr-east-02.cleardb.com/findBodyNote"
-const CREATE_BODY_NOTE = "http://us-cdbr-east-02.cleardb.com/createBodyNote"
-const DELETE_BODY_NOTE = "http://us-cdbr-east-02.cleardb.com/deleteBodyNote"
-const RENAME_BODY_NOTE = "http://us-cdbr-east-02.cleardb.com/renameMovie"
+const FIND_ALL_BODY_NOTE = "https://us-cdbr-east-02.cleardb.com/findAllBodyNote"
+const FIND_BODY_NOTE = "https://us-cdbr-east-02.cleardb.com/findBodyNote"
+const CREATE_BODY_NOTE = "https://us-cdbr-east-02.cleardb.com/createBodyNote"
+const DELETE_BODY_NOTE = "https://us-cdbr-east-02.cleardb.com/deleteBodyNote"
+const RENAME_BODY_NOTE = "https://us-cdbr-east-02.cleardb.com/renameMovie"
 
 const findAllBodyNote = () =>
     fetch(`${FIND_ALL_BODY_NOTE}`)
