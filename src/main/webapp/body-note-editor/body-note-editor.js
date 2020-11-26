@@ -1,6 +1,6 @@
 class BodyNoteEditor extends React.Component {
   state = {
-    note: {bodyNote: ''}
+    note: {bodyNote: "Balanced"}
   }
 
   findBodyNote = () => {
@@ -13,16 +13,16 @@ class BodyNoteEditor extends React.Component {
   componentDidMount = () => this.findBodyNote()
 
   submitForm = () =>
-      renameBodyNote(this.state.note.bodyNote, this.state.note.bodyNote)
+      renameBodyNote("Balanced", this.state.note.bodyNote)
       .then(this.findBodyNote)
 
   render() {
     return (
         <div className="container-fluid">
-          <h1>Body Note Editor {this.state.note.bodyNote}</h1>
+          <h1>Body Note Editor {"Balanced"}</h1>
           <form>
             <input
-                value={this.state.note.bodyNote}
+                value={"Balanced"}
                 className="form-control"
                 readOnly={true}/>
             <input
