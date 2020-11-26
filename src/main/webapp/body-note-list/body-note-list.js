@@ -39,10 +39,10 @@ class BodyNoteList extends React.Component {
                   <tr key={bodyNote.bodyNote}>
                     <td>{bodyNote.bodyNote}</td>
                     <td>
-                      <a className="btn btn-primary float-right"
+                      <button className="btn btn-primary float-right"
                          href={`../body-note-editor/body-note-editor.html?bodyNote=${bodyNote.bodyNote}`}>
                         Edit
-                      </a>
+                      </button>
                       <button className="btn btn-danger float-right"
                               onClick={() => this.deleteBodyNote(
                                   bodyNote.bodyNote)}>

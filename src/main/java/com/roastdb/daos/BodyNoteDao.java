@@ -40,7 +40,7 @@ public class BodyNoteDao {
     bodyNoteRepository.deleteById(bodyNote);
   }
 
-  @GetMapping("/renameMovie/{oldBodyNote}/{newBodyNote}")
+  @GetMapping("/renameBodyNote/{oldBodyNote}/{newBodyNote}")
   public BodyNote renameBodyNote(
       @PathVariable("oldBodyNote") String oldBodyNote,
       @PathVariable("newBodyNote") String newBodyNote) {
