@@ -13,7 +13,7 @@ class VendorsEditor extends React.Component {
   componentDidMount = () => this.findVendor()
 
   submitForm = () =>
-      updateVendorTotalCost(this.state.vendor.id,
+      renameVendor(this.state.vendor.id,
           this.state.vendor.name)
       .then(this.findVendor)
 

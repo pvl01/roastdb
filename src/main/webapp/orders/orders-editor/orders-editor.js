@@ -13,7 +13,7 @@ class OrdersEditor extends React.Component {
   componentDidMount = () => this.findOrder()
 
   submitForm = () =>
-      updateOrderTotalCost(this.state.order.id,
+      updateOrderTotalCost(this.state.order.orderId,
           this.state.order.totalCost)
       .then(this.findOrder)
 
