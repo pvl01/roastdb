@@ -1,10 +1,13 @@
 package com.roastdb.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -14,9 +17,15 @@ public class Coffee {
   @Id
   @Column(name = "id")
   private Integer id;
+  @Column(name = "vid")
+  private Integer vendorId;
   private String roast;
   private String growingRegion;
   private Integer elevation;
+  @ManyToOne
+  @PrimaryKeyJoinColumn(name = "vid", referencedColumnName = "id")
+  @JsonIgnore
+  private Vendor vendor;
   @OneToMany(mappedBy = "coffee")
   private List<CoffeeConfiguration> configurations;
   @OneToMany(mappedBy = "coffee")
@@ -30,6 +39,14 @@ public class Coffee {
 
   public void setId(Integer id) {
     this.id = id;
+  }
+
+  public Integer getVendorId() {
+    return vendorId;
+  }
+
+  public void setVendorId(Integer vendorId) {
+    this.vendorId = vendorId;
   }
 
   public String getRoast() {
@@ -54,6 +71,14 @@ public class Coffee {
 
   public void setElevation(Integer elevation) {
     this.elevation = elevation;
+  }
+
+  public Vendor getVendor() {
+    return vendor;
+  }
+
+  public void setVendor(Vendor vendor) {
+    this.vendor = vendor;
   }
 
   public List<CoffeeConfiguration> getConfigurations() {

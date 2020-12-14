@@ -55,7 +55,7 @@ class CoffeeConfigurationsList extends React.Component {
                     <td>{coffeeConfiguration.amount}</td>
                     <td>
                       <a className="btn btn-primary float-right"
-                         href={`../coffeeConfigurations-editor/coffeeConfigurations-editor.html?coffeeConfiguration=${coffeeConfiguration.id}`}>
+                         href={`../coffee-configurations-editor/coffee-configurations-editor.html?coffeeConfiguration=${coffeeConfiguration.id}`}>
                         Edit
                       </a>
                       <button className="btn btn-danger float-right"
