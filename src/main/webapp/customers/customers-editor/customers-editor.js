@@ -40,7 +40,7 @@ class CustomersEditor extends React.Component {
               Save
             </button>
             <a className="btn btn-danger"
-               href="../customer-list/customer-list.html">
+               href="../customers-list/customers-list.html">
               Cancel
             </a>
           </form>

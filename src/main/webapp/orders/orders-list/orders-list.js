@@ -45,20 +45,20 @@ class OrdersList extends React.Component {
             <tbody>
             {
               this.state.orders.map(order =>
-                  <tr key={order.id}>
-                    <td>{order.id}</td>
+                  <tr key={order.orderId}>
+                    <td>{order.orderId}</td>
                     <td>{order.customerId}</td>
                     <td>{order.totalCost}</td>
                     <td>{order.purchaseDate}</td>
                     <td>{order.arrivalDate}</td>
                     <td>
                       <a className="btn btn-primary float-right"
-                         href={`../orders-editor/orders-editor.html?order=${order.id}`}>
+                         href={`../orders-editor/orders-editor.html?order=${order.orderId}`}>
                         Edit
                       </a>
                       <button className="btn btn-danger float-right"
                               onClick={() => this.deleteOrder(
-                                  order.id)}>
+                                  order.orderId)}>
                         Delete
                       </button>
                     </td>
