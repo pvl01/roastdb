@@ -42,7 +42,7 @@ public class OrderDao {
     orderRepository.deleteById(order);
   }
 
-  @GetMapping("/updateOrderRoast/{order}/{newTotalCost}")
+  @GetMapping("/updateOrderTotalCost/{order}/{newTotalCost}")
   public Order updateOrderTotalCost(
       @PathVariable("order") Integer order,
       @PathVariable("newTotalCost") BigDecimal newTotalCost) {

@@ -41,7 +41,7 @@ public class VendorDao {
     vendorRepository.deleteById(vendor);
   }
 
-  @GetMapping("/updateVendorRoast/{vendor}/{newName}")
+  @GetMapping("/renameVendor/{vendor}/{newName}")
   public Vendor renameVendor(
       @PathVariable("vendor") Integer vendor,
       @PathVariable("newName") String newName) {
