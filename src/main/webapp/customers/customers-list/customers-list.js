@@ -55,7 +55,7 @@ class CustomersList extends React.Component {
                     <td>{customer.email}</td>
                     <td>
                       <a className="btn btn-primary float-right"
-                         href={`../customer-editor/customer-editor.html?bodyNote=${customer.id}`}>
+                         href={`../customers-editor/customers-editor.html?customer=${customer.id}`}>
                         Edit
                       </a>
                       <button className="btn btn-danger float-right"
