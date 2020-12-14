@@ -12,53 +12,13 @@ class CustomersEditor extends React.Component {
 
   componentDidMount = () => this.findCustomer()
 
-  getFirstName = () => {
-    if (this.state.customer.firstName) {
-      return this.state.customer.firstName
-    } else {
-      return "First Name"
-    }
-  }
-
-  getLastName = () => {
-    if (this.state.customer.lastName) {
-      return this.state.customer.lastName
-    } else {
-      return "Last Name"
-    }
-  }
-
-  getUsername = () => {
-    if (this.state.customer.username) {
-      return this.state.customer.username
-    } else {
-      return "Username"
-    }
-  }
-
-  getPassword = () => {
-    if (this.state.customer.password) {
-      return this.state.customer.password
-    } else {
-      return "Password"
-    }
-  }
-
-  getEmail = () => {
-    if (this.state.customer.email) {
-      return this.state.customer.email
-    } else {
-      return "Email"
-    }
-  }
-
   submitForm = () =>
       renameCustomer(this.state.customer.id, this.state.customer.firstName)
-      .then(this.renameCustomerLast(this.state.customer.id, this.state.customer.lastName))
-      .then(this.updateCustomerUsername(this.state.customer.id, this.state.customer.username))
-      .then(this.updateCustomerPassword(this.state.customer.id, this.state.customer.password))
-      .then(this.updateCustomerEmail(this.state.customer.id, this.state.customer.email))
-      .then(this.findCustomer)
+      .then(() => renameCustomerLast(this.state.customer.id, this.state.customer.lastName))
+      .then(() => updateCustomerUsername(this.state.customer.id, this.state.customer.username))
+      .then(() => updateCustomerPassword(this.state.customer.id, this.state.customer.password))
+      .then(() => updateCustomerEmail(this.state.customer.id, this.state.customer.email))
+      .then(() => findCustomer)
 
   render() {
     return (
@@ -66,7 +26,7 @@ class CustomersEditor extends React.Component {
           <h1>Customer Editor</h1>
           <form>
             <input
-                value={() => this.getFirstName()}
+                value={"First Name: " + this.state.customer.firstName}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -78,7 +38,7 @@ class CustomersEditor extends React.Component {
                 className="form-control"
                 value={this.state.customer.firstName}/>
             <input
-                value={() => this.getLastName()}
+                value={"Last Name: " + this.state.customer.lastName}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -90,7 +50,7 @@ class CustomersEditor extends React.Component {
                 className="form-control"
                 value={this.state.customer.lastName}/>
             <input
-                value={() => this.getUsername()}
+                value={"Username: " + this.state.customer.username}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -102,7 +62,7 @@ class CustomersEditor extends React.Component {
                 className="form-control"
                 value={this.state.customer.username}/>
             <input
-                value={() => this.getPassword()}
+                value={"Password: " + this.state.customer.password}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -114,7 +74,7 @@ class CustomersEditor extends React.Component {
                 className="form-control"
                 value={this.state.customer.password}/>
             <input
-                value={() => this.getEmail()}
+                value={"Email: " + this.state.customer.email}
                 className="form-control"
                 readOnly={true}/>
             <input
