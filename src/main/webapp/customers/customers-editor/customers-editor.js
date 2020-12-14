@@ -12,24 +12,52 @@ class CustomersEditor extends React.Component {
 
   componentDidMount = () => this.findCustomer()
 
-  submitFormFirst = () =>
+  getFirstName = () => {
+    if (this.state.customer.firstName) {
+      return this.state.customer.firstName
+    } else {
+      return "First Name"
+    }
+  }
+
+  getLastName = () => {
+    if (this.state.customer.lastName) {
+      return this.state.customer.lastName
+    } else {
+      return "Last Name"
+    }
+  }
+
+  getUsername = () => {
+    if (this.state.customer.username) {
+      return this.state.customer.username
+    } else {
+      return "Username"
+    }
+  }
+
+  getPassword = () => {
+    if (this.state.customer.password) {
+      return this.state.customer.password
+    } else {
+      return "Password"
+    }
+  }
+
+  getEmail = () => {
+    if (this.state.customer.email) {
+      return this.state.customer.email
+    } else {
+      return "Email"
+    }
+  }
+
+  submitForm = () =>
       renameCustomer(this.state.customer.id, this.state.customer.firstName)
-      .then(this.findCustomer)
-
-  submitFormLast = () =>
-      renameCustomerLast(this.state.customer.id, this.state.customer.lastName)
-      .then(this.findCustomer)
-
-  submitFormUsername = () =>
-      updateCustomerUsername(this.state.customer.id, this.state.customer.username)
-      .then(this.findCustomer)
-
-  submitFormPassword = () =>
-      updateCustomerPassword(this.state.customer.id, this.state.customer.password)
-      .then(this.findCustomer)
-
-  submitFormEmail = () =>
-      updateCustomerEmail(this.state.customer.id, this.state.customer.email)
+      .then(this.renameCustomerLast(this.state.customer.id, this.state.customer.lastName))
+      .then(this.updateCustomerUsername(this.state.customer.id, this.state.customer.username))
+      .then(this.updateCustomerPassword(this.state.customer.id, this.state.customer.password))
+      .then(this.updateCustomerEmail(this.state.customer.id, this.state.customer.email))
       .then(this.findCustomer)
 
   render() {
@@ -38,7 +66,7 @@ class CustomersEditor extends React.Component {
           <h1>Customer Editor</h1>
           <form>
             <input
-                value={this.state.customer.firstName}
+                value={() => this.getFirstName()}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -49,20 +77,8 @@ class CustomersEditor extends React.Component {
                       })}
                 className="form-control"
                 value={this.state.customer.firstName}/>
-            <button
-                type="button"
-                onClick={() => this.submitFormFirst()}
-                className="btn btn-success">
-              Save
-            </button>
-            <a className="btn btn-danger"
-               href="../customers-list/customers-list.html">
-              Cancel
-            </a>
-          </form>
-          <form>
             <input
-                value={this.state.customer.lastName}
+                value={() => this.getLastName()}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -73,20 +89,8 @@ class CustomersEditor extends React.Component {
                       })}
                 className="form-control"
                 value={this.state.customer.lastName}/>
-            <button
-                type="button"
-                onClick={() => this.submitFormLast()}
-                className="btn btn-success">
-              Save
-            </button>
-            <a className="btn btn-danger"
-               href="../customers-list/customers-list.html">
-              Cancel
-            </a>
-          </form>
-          <form>
             <input
-                value={this.state.customer.username}
+                value={() => this.getUsername()}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -97,20 +101,8 @@ class CustomersEditor extends React.Component {
                       })}
                 className="form-control"
                 value={this.state.customer.username}/>
-            <button
-                type="button"
-                onClick={() => this.submitFormUsername()}
-                className="btn btn-success">
-              Save
-            </button>
-            <a className="btn btn-danger"
-               href="../customers-list/customers-list.html">
-              Cancel
-            </a>
-          </form>
-          <form>
             <input
-                value={this.state.customer.password}
+                value={() => this.getPassword()}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -121,20 +113,8 @@ class CustomersEditor extends React.Component {
                       })}
                 className="form-control"
                 value={this.state.customer.password}/>
-            <button
-                type="button"
-                onClick={() => this.submitFormPassword()}
-                className="btn btn-success">
-              Save
-            </button>
-            <a className="btn btn-danger"
-               href="../customers-list/customers-list.html">
-              Cancel
-            </a>
-          </form>
-          <form>
             <input
-                value={this.state.customer.email}
+                value={() => this.getEmail()}
                 className="form-control"
                 readOnly={true}/>
             <input
@@ -147,7 +127,7 @@ class CustomersEditor extends React.Component {
                 value={this.state.customer.email}/>
             <button
                 type="button"
-                onClick={() => this.submitFormEmail()}
+                onClick={() => this.submitForm()}
                 className="btn btn-success">
               Save
             </button>
