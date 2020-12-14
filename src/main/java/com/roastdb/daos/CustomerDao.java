@@ -48,4 +48,40 @@ public class CustomerDao {
     customer.setFirstName(newName);
     return customerRepository.save(customer);
   }
+
+  @GetMapping("/renameCustomerLast/{customer}/{newLastName}")
+  public Customer renameCustomerLast(
+      @PathVariable("customer") Integer customerId,
+      @PathVariable("newLastName") String newLastName) {
+    Customer customer = customerRepository.findById(customerId).get();
+    customer.setLastName(newLastName);
+    return customerRepository.save(customer);
+  }
+
+  @GetMapping("/updateCustomerUsername/{customer}/{newUsername}")
+  public Customer updateCustomerUsername(
+      @PathVariable("customer") Integer customerId,
+      @PathVariable("newUsername") String newUsername) {
+    Customer customer = customerRepository.findById(customerId).get();
+    customer.setUsername(newUsername);
+    return customerRepository.save(customer);
+  }
+
+  @GetMapping("/updateCustomerPassword/{customer}/{newPassword}")
+  public Customer updateCustomerPassword(
+      @PathVariable("customer") Integer customerId,
+      @PathVariable("newPassword") String newPassword) {
+    Customer customer = customerRepository.findById(customerId).get();
+    customer.setPassword(newPassword);
+    return customerRepository.save(customer);
+  }
+
+  @GetMapping("/updateCustomerEmail/{customer}/{newEmail}")
+  public Customer updateCustomerEmail(
+      @PathVariable("customer") Integer customerId,
+      @PathVariable("newEmail") String newEmail) {
+    Customer customer = customerRepository.findById(customerId).get();
+    customer.setEmail(newEmail);
+    return customerRepository.save(customer);
+  }
 }
