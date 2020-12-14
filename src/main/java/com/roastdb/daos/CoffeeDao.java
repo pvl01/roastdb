@@ -41,12 +41,39 @@ public class CoffeeDao {
     coffeeRepository.deleteById(coffee);
   }
 
+  @GetMapping("/updateCoffeeVendor/{coffee}/{newVendor}")
+  public Coffee updateCoffeeVendor(
+      @PathVariable("coffee") Integer coffee,
+      @PathVariable("newVendor") Integer newVendor) {
+    Coffee oldCoffee = coffeeRepository.findById(coffee).get();
+    oldCoffee.setVendorId(newVendor);
+    return coffeeRepository.save(oldCoffee);
+  }
+
   @GetMapping("/updateCoffeeRoast/{coffee}/{newRoast}")
   public Coffee updateCoffeeRoast(
       @PathVariable("coffee") Integer coffee,
       @PathVariable("newRoast") String newRoast) {
     Coffee oldCoffee = coffeeRepository.findById(coffee).get();
     oldCoffee.setRoast(newRoast);
+    return coffeeRepository.save(oldCoffee);
+  }
+
+  @GetMapping("/updateCoffeeGrowingRegion/{coffee}/{newGrowingRegion}")
+  public Coffee updateCoffeeGrowingRegion(
+      @PathVariable("coffee") Integer coffee,
+      @PathVariable("newGrowingRegion") String newGrowingRegion) {
+    Coffee oldCoffee = coffeeRepository.findById(coffee).get();
+    oldCoffee.setGrowingRegion(newGrowingRegion);
+    return coffeeRepository.save(oldCoffee);
+  }
+
+  @GetMapping("/updateCoffeeElevation/{coffee}/{newElevation}")
+  public Coffee updateCoffeeElevation(
+      @PathVariable("coffee") Integer coffee,
+      @PathVariable("newElevation") Integer newElevation) {
+    Coffee oldCoffee = coffeeRepository.findById(coffee).get();
+    oldCoffee.setElevation(newElevation);
     return coffeeRepository.save(oldCoffee);
   }
 }

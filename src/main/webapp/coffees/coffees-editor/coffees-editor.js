@@ -13,9 +13,11 @@ class CoffeesEditor extends React.Component {
   componentDidMount = () => this.findCoffee()
 
   submitForm = () =>
-      updateCoffeeRoast(this.state.coffee.id,
-          this.state.coffee.roast)
-      .then(this.findCoffee)
+      updateCoffeeVendor(this.state.coffee.id, this.state.coffee.vendorId)
+      .then(() => updateCoffeeRoast(this.state.coffee.id, this.state.coffee.roast))
+      .then(() => updateCoffeeGrowingRegion(this.state.coffee.id, this.state.coffee.growingRegion))
+      .then(() => updateCoffeeElevation(this.state.coffee.id, this.state.coffee.elevation))
+      .then(() => findCoffee)
 
   render() {
     return (
@@ -23,20 +25,53 @@ class CoffeesEditor extends React.Component {
           <h1>Coffee Editor</h1>
           <form>
             <input
-                value={this.state.coffee.roast}
+                value={"Vendor ID: " + this.state.coffee.vendorId}
                 className="form-control"
                 readOnly={true}/>
             <input
                 onChange={
                   (event) =>
                       this.setState({
-                        coffee: {
-                          ...this.state.coffee,
-                          roast: event.target.value
-                        }
+                        coffee: {...this.state.coffee, vendorId: event.target.value}
+                      })}
+                className="form-control"
+                value={this.state.coffee.vendorId}/>
+            <input
+                value={"Roast: " + this.state.coffee.roast}
+                className="form-control"
+                readOnly={true}/>
+            <input
+                onChange={
+                  (event) =>
+                      this.setState({
+                        coffee: {...this.state.coffee, roast: event.target.value}
                       })}
                 className="form-control"
                 value={this.state.coffee.roast}/>
+            <input
+                value={"Growing Region: " + this.state.coffee.growingRegion}
+                className="form-control"
+                readOnly={true}/>
+            <input
+                onChange={
+                  (event) =>
+                      this.setState({
+                        coffee: {...this.state.coffee, growingRegion: event.target.value}
+                      })}
+                className="form-control"
+                value={this.state.coffee.growingRegion}/>
+            <input
+                value={"Elevation: " + this.state.coffee.elevation}
+                className="form-control"
+                readOnly={true}/>
+            <input
+                onChange={
+                  (event) =>
+                      this.setState({
+                        coffee: {...this.state.coffee, elevation: event.target.value}
+                      })}
+                className="form-control"
+                value={this.state.coffee.elevation}/>
             <button
                 type="button"
                 onClick={() => this.submitForm()}

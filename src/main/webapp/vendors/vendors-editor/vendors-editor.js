@@ -13,9 +13,9 @@ class VendorsEditor extends React.Component {
   componentDidMount = () => this.findVendor()
 
   submitForm = () =>
-      renameVendor(this.state.vendor.id,
-          this.state.vendor.name)
-      .then(this.findVendor)
+      renameVendor(this.state.vendor.id, this.state.vendor.name)
+      .then(() => updateVendorOrigin(this.state.vendor.id, this.state.vendor.origin))
+      .then(() => findVendor)
 
   render() {
     return (
@@ -23,20 +23,29 @@ class VendorsEditor extends React.Component {
           <h1>Vendor Editor</h1>
           <form>
             <input
-                value={this.state.vendor.name}
+                value={"Name: " + this.state.vendor.name}
                 className="form-control"
                 readOnly={true}/>
             <input
                 onChange={
                   (event) =>
                       this.setState({
-                        vendor: {
-                          ...this.state.vendor,
-                          name: event.target.value
-                        }
+                        vendor: {...this.state.vendor, name: event.target.value}
                       })}
                 className="form-control"
                 value={this.state.vendor.name}/>
+            <input
+                value={"Origin: " + this.state.vendor.origin}
+                className="form-control"
+                readOnly={true}/>
+            <input
+                onChange={
+                  (event) =>
+                      this.setState({
+                        vendor: {...this.state.vendor, origin: event.target.value}
+                      })}
+                className="form-control"
+                value={this.state.vendor.origin}/>
             <button
                 type="button"
                 onClick={() => this.submitForm()}

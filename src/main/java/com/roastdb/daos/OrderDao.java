@@ -3,6 +3,7 @@ package com.roastdb.daos;
 import com.roastdb.models.Order;
 import com.roastdb.repositories.OrderRepository;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,12 +43,39 @@ public class OrderDao {
     orderRepository.deleteById(order);
   }
 
+  @GetMapping("/updateOrderCustomer/{order}/{newCustomer}")
+  public Order updateOrderCustomer(
+      @PathVariable("order") Integer order,
+      @PathVariable("newCustomer") Integer newCustomer) {
+    Order oldOrder = orderRepository.findById(order).get();
+    oldOrder.setCustomerId(newCustomer);
+    return orderRepository.save(oldOrder);
+  }
+
   @GetMapping("/updateOrderTotalCost/{order}/{newTotalCost}")
   public Order updateOrderTotalCost(
       @PathVariable("order") Integer order,
       @PathVariable("newTotalCost") BigDecimal newTotalCost) {
     Order oldOrder = orderRepository.findById(order).get();
     oldOrder.setTotalCost(newTotalCost);
+    return orderRepository.save(oldOrder);
+  }
+
+  @GetMapping("/updateOrderPurchaseDate/{order}/{newPurchaseDate}")
+  public Order updateOrderPurchaseDate(
+      @PathVariable("order") Integer order,
+      @PathVariable("newPurchaseDate") Date newPurchaseDate) {
+    Order oldOrder = orderRepository.findById(order).get();
+    oldOrder.setPurchaseDate(newPurchaseDate);
+    return orderRepository.save(oldOrder);
+  }
+
+  @GetMapping("/updateOrderArrivalDate/{order}/{newArrivalDate}")
+  public Order updateOrderArrivalDate(
+      @PathVariable("order") Integer order,
+      @PathVariable("newArrivalDate") Date newArrivalDate) {
+    Order oldOrder = orderRepository.findById(order).get();
+    oldOrder.setArrivalDate(newArrivalDate);
     return orderRepository.save(oldOrder);
   }
 }

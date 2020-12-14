@@ -49,4 +49,13 @@ public class VendorDao {
     oldVendor.setName(newName);
     return vendorRepository.save(oldVendor);
   }
+
+  @GetMapping("/updateVendorOrigin/{vendor}/{newOrigin}")
+  public Vendor updateVendorOrigin(
+      @PathVariable("vendor") Integer vendor,
+      @PathVariable("newOrigin") String newOrigin) {
+    Vendor oldVendor = vendorRepository.findById(vendor).get();
+    oldVendor.setOrigin(newOrigin);
+    return vendorRepository.save(oldVendor);
+  }
 }

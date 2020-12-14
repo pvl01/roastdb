@@ -8,6 +8,8 @@ const DELETE_VENDOR =
     "https://roastdb.herokuapp.com/deleteVendor"
 const RENAME_VENDOR=
     "https://roastdb.herokuapp.com/renameVendor"
+const UPDATE_VENDOR_ORIGIN=
+    "https://roastdb.herokuapp.com/updateVendorOrigin"
 
 const findAllVendors = () =>
     fetch(`${FIND_ALL_VENDORS}`)
@@ -26,4 +28,8 @@ const deleteVendor = (vendor) =>
 
 const renameVendor = (vendor, newName) =>
     fetch(`${RENAME_VENDOR}/${vendor}/${newName}`)
+    .then(response => response.json())
+
+const updateVendorOrigin = (vendor, newOrigin) =>
+    fetch(`${UPDATE_VENDOR_ORIGIN}/${vendor}/${newOrigin}`)
     .then(response => response.json())

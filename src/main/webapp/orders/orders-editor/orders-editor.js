@@ -13,9 +13,11 @@ class OrdersEditor extends React.Component {
   componentDidMount = () => this.findOrder()
 
   submitForm = () =>
-      updateOrderTotalCost(this.state.order.orderId,
-          this.state.order.totalCost)
-      .then(this.findOrder)
+      updateOrderCustomer(this.state.order.id, this.state.order.customerId)
+      .then(() => updateOrderTotalCost(this.state.order.id, this.state.order.totalCost))
+      .then(() => updateOrderPurchaseDate(this.state.order.id, this.state.order.purchaseDate))
+      .then(() => updateOrderArrivalDate(this.state.order.id, this.state.order.arrivalDate))
+      .then(() => findOrder)
 
   render() {
     return (
@@ -23,20 +25,53 @@ class OrdersEditor extends React.Component {
           <h1>Order Editor</h1>
           <form>
             <input
-                value={this.state.order.totalCost}
+                value={"Customer ID: " + this.state.order.customerId}
                 className="form-control"
                 readOnly={true}/>
             <input
                 onChange={
                   (event) =>
                       this.setState({
-                        order: {
-                          ...this.state.order,
-                          totalCost: event.target.value
-                        }
+                        order: {...this.state.order, customerId: event.target.value}
+                      })}
+                className="form-control"
+                value={this.state.order.customerId}/>
+            <input
+                value={"Total Cost: " + this.state.order.totalCost}
+                className="form-control"
+                readOnly={true}/>
+            <input
+                onChange={
+                  (event) =>
+                      this.setState({
+                        order: {...this.state.order, totalCost: event.target.value}
                       })}
                 className="form-control"
                 value={this.state.order.totalCost}/>
+            <input
+                value={"Purchase Date: " + this.state.order.purchaseDate}
+                className="form-control"
+                readOnly={true}/>
+            <input
+                onChange={
+                  (event) =>
+                      this.setState({
+                        order: {...this.state.order, purchaseDate: event.target.value}
+                      })}
+                className="form-control"
+                value={this.state.order.purchaseDate}/>
+            <input
+                value={"Arrival Date: " + this.state.order.arrivalDate}
+                className="form-control"
+                readOnly={true}/>
+            <input
+                onChange={
+                  (event) =>
+                      this.setState({
+                        order: {...this.state.order, arrivalDate: event.target.value}
+                      })}
+                className="form-control"
+                value={this.state.order.arrivalDate}/>
             <button
                 type="button"
                 onClick={() => this.submitForm()}
