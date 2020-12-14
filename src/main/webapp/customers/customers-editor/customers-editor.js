@@ -50,6 +50,6 @@ class CustomersEditor extends React.Component {
 }
 
 ReactDOM.render(
-    <CustomerEditor/>,
+    <CustomersEditor/>,
     document.getElementById('root')
 )
