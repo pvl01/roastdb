@@ -47,7 +47,7 @@ class CoffeesList extends React.Component {
               this.state.coffees.map(coffee =>
                   <tr key={coffee.id}>
                     <td>{coffee.id}</td>
-                    <td>{coffee.vid}</td>
+                    <td>{coffee.vendorId}</td>
                     <td>{coffee.roast}</td>
                     <td>{coffee.growingRegion}</td>
                     <td>{coffee.elevation}</td>

@@ -13,10 +13,10 @@ class OrdersEditor extends React.Component {
   componentDidMount = () => this.findOrder()
 
   submitForm = () =>
-      updateOrderCustomer(this.state.order.id, this.state.order.customerId)
-      .then(() => updateOrderTotalCost(this.state.order.id, this.state.order.totalCost))
-      .then(() => updateOrderPurchaseDate(this.state.order.id, this.state.order.purchaseDate))
-      .then(() => updateOrderArrivalDate(this.state.order.id, this.state.order.arrivalDate))
+      updateOrderCustomer(this.state.order.orderId, this.state.order.customerId)
+      .then(() => updateOrderTotalCost(this.state.order.orderId, this.state.order.totalCost))
+      .then(() => updateOrderPurchaseDate(this.state.order.orderId, this.state.order.purchaseDate))
+      .then(() => updateOrderArrivalDate(this.state.order.orderId, this.state.order.arrivalDate))
       .then(() => findOrder)
 
   render() {
